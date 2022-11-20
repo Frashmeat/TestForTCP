@@ -1,7 +1,6 @@
 package com.LJK.Server;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -24,10 +23,13 @@ public class Server_TCP implements Runnable{
          ss = new ServerSocket(port);
          client = ss.accept();
         toClientOut = client.getOutputStream();
-
-        String send = "Start connecting";
-        toClientOut.write(send.getBytes());
-
+        File image = new File("C:\\Users\\sluttyname\\Pictures\\screenshots\\khl20220829001132849.png");
+        FileInputStream fin = new FileInputStream(image);
+        int len = 0;
+        byte[] bytes = new byte[1024];
+        while((len = fin.read(bytes))!=-1){
+            toClientOut.write(bytes);
+        }
 
     }
     @Override
