@@ -80,6 +80,8 @@ public class Server_TCP implements Runnable{
                 st.sendToClient(send);
                 //关闭服务器
                 st.close();
+                fromClientIn.close();
+                toClientOut.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
