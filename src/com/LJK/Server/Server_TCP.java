@@ -19,19 +19,22 @@ public class Server_TCP implements Runnable{
     }
 
     public Server_TCP(int port) {
+        thread = new Thread(this);
         this.port = port;
     }
 
     public void Server() throws IOException {
-        //开启服务器
+        //开启服务器(本机ip：port)
         ss = new ServerSocket(port);
-         //服务器等待链接
+        //服务器等待链接
+        //服务器获取链接客服端的Socket
         client = ss.accept();
 
-         //服务器获取链接客服端的Socket
+        //保存客户端的输入输出流
         toClientOut = client.getOutputStream();
-        //保存客户端信息
         fromClientIn = client.getInputStream();
+
+        //test
 //        File image = new File("C:\\Users\\sluttyname\\Pictures\\screenshots\\khl20220829001132849.png");
 //        FileInputStream fin = new FileInputStream(image);
 //        int len = 0;
@@ -42,6 +45,7 @@ public class Server_TCP implements Runnable{
 //        }
 
     }
+    //发送文件
     public void sendToClient(File file) throws IOException {
         if(!file.exists()) return;
         FileInputStream fin = new FileInputStream(file);
@@ -51,22 +55,30 @@ public class Server_TCP implements Runnable{
             toClientOut.write(bytes);
         }
     }
-    public void close() throws IOException {
-        this.ss.close();
-    }
+    //发送字符串
     public void sendToClient(String chat) throws IOException {
         toClientOut.write(chat.getBytes());
     }
+    //关闭服务器
+    public void close() throws IOException {
+        this.ss.close();
+    }
+
     @Override
     public void run() {
         System.out.println("Server_TCP has Started");
         Scanner sc = new Scanner(System.in);
         while(true){
             try {
+                //创建服务器
                 Server_TCP st =  new Server_TCP();
+                //开启服务器
                 st.Server();
+                //准备要发送的信息
                 String send = sc.nextLine();
+                //发送
                 st.sendToClient(send);
+                //关闭服务器
                 st.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
