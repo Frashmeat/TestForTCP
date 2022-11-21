@@ -1,11 +1,10 @@
 package com.LJK.UDP;
 
-import com.LJK.UDP.Client.Client_UDP;
+import com.lk.UDP.Client.Client_UDP;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class ClientUDPMain {
     public static void main(String[] args) {

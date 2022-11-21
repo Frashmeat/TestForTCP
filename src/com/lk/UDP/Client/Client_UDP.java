@@ -1,13 +1,11 @@
-package com.LJK.UDP.Client;
+package com.lk.UDP.Client;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
 import java.util.Scanner;
 
 public class Client_UDP {
