@@ -64,24 +64,30 @@ public class Server_TCP implements Runnable{
         this.ss.close();
     }
 
+
     @Override
     public void run() {
         System.out.println("Server_TCP has Started");
         Scanner sc = new Scanner(System.in);
         while(true){
             try {
+                //询问当前是否有客服端链接
+                if(client == null) {
+                    System.out.println("client is null ");
+                }
                 //创建服务器
                 Server_TCP st =  new Server_TCP();
                 //开启服务器
                 st.Server();
+                //客服端已链接
+                System.out.println("client is connecting");
                 //准备要发送的信息
                 String send = sc.nextLine();
                 //发送
                 st.sendToClient(send);
                 //关闭服务器
                 st.close();
-                fromClientIn.close();
-                toClientOut.close();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
