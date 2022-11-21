@@ -1,4 +1,4 @@
-package com.LJK.TCP.Client;
+package com.lk.TCP.Client;
 
 import java.io.IOException;
 import java.io.InputStream;
