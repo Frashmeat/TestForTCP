@@ -8,7 +8,7 @@ import java.net.SocketException;
 public class ServerUDPMain {
     public static void main(String[] args) {
         try {
-            Server_UDP su = new Server_UDP(8999);
+            Server_UDP su = new Server_UDP(9001);
             su.Server();
         } catch (IOException e) {
             throw new RuntimeException(e);

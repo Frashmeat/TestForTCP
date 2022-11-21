@@ -28,10 +28,19 @@ public class Client_UDP {
         }
     }
     public void Connect(File file) throws IOException {
-        FileInputStream fin = new FileInputStream(file);
-        byte[] bytes = fin.readAllBytes();
-        DatagramPacket data = new DatagramPacket(bytes,bytes.length,address,port);
-        DatagramSocket datagramSocket = new DatagramSocket();
-        datagramSocket.send(data);
+       while(true){
+           DatagramSocket datagramSocket = new DatagramSocket();
+           FileInputStream fin = new FileInputStream(file);
+           byte[] bytes = new byte[fin.available()];
+
+           fin.read(bytes);
+
+           DatagramPacket data = new DatagramPacket(bytes,0,bytes.length,address,port);
+
+
+           datagramSocket.send(data);
+           datagramSocket.close();
+           fin.close();
+       }
     }
 }
