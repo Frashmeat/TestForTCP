@@ -1,7 +1,5 @@
 package com.lk.Client;
 
-import com.LJK.Client.Client_TCP;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -35,7 +33,7 @@ public class Client implements Runnable{
         public void run() {
             try {
                 //创建并开始链接
-                new com.LJK.Client.Client_TCP(8666).Connect();
+                new com.LJK.TCP.Client.Client_TCP().Connect();
                 //读取数据
                 int len = 0;
                 byte[] bytes = new byte[2048];
@@ -53,5 +51,3 @@ public class Client implements Runnable{
 
         }
     }
-
-}

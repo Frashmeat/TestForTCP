@@ -1,4 +1,4 @@
-import com.LJK.Client.Client_TCP;
+import com.LJK.TCP.Client.Client_TCP;
 
 import java.io.IOException;
 import java.net.InetAddress;

@@ -1,4 +1,4 @@
-package com.LJK.Server;
+package com.LJK.TCP.Server;
 
 import java.io.*;
 import java.net.ServerSocket;
